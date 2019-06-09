@@ -1,5 +1,4 @@
 # this program should be run from root.
-
 import os
 
 username = input("Enter username: ")
