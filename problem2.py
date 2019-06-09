@@ -1,12 +1,15 @@
 from googlesearch import search
-from bs4 import BeautifulSoup
 
 topic = input("Enter topic: ")
 
 url = []
 
 for i in search(topic, stop=10):
-    # print(i)
     url.append(i)
+
+with open('Links.txt', 'w') as f:
+    for i in url:
+        f.write(i)
+        f.write('\n')
 
 print(*url, sep='\n')
