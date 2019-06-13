@@ -5,7 +5,6 @@ user = input("Enter name: ")
 t = d.now()
 h = t.hour
 
-
 if h < 12:
     print('Good Morning ' + user + '.')
 elif 12 < h < 17:
