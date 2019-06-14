@@ -6,11 +6,11 @@ recv_port = 4444
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 while True:
-    message = input('Message: ')
+    message = input('Message (exit for close): ')
     if len(message) > 150:
         print("Length must not exceed 150 character.")
         continue
-    if message == 'exit' or message == 'Exit':
+    if message == 'exit':
         s.close()
         exit(0)
     s.sendto(message.encode(), (recv_ip, recv_port))

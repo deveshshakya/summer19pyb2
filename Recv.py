@@ -9,11 +9,11 @@ s.bind((recv_ip, recv_port))
 while True:
     data = s.recvfrom(255)
     print("Message: " + str(data[0].decode()) + "\nIP: " + str(data[1].decode()))
-    reply = input('Reply: ')
+    reply = input('Reply (exit for close): ')
     if len(reply) > 150:
         print("Length must not exceed 150 character.")
         continue
-    if reply == 'exit' or reply == 'Exit':
+    if reply == 'exit':
         s.close()
         exit(0)
     s.sendto(reply.encode(), data[1])
