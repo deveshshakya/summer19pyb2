@@ -1,10 +1,6 @@
 import os
 import shlex, subprocess
-from gtts import gTTS 
-
-text = 'Command was previously given, not do this again.'
-obj = gTTS(text=text, lang='en', slow=False)
-obj.save("audio.mp3")
+import pyttsx3
 
 cmds = []
 
@@ -12,7 +8,10 @@ while True:
     bashCommand = input("Enter: ")
     try:
         if bashCommand in cmds:
-            os.system("mpg321 audio.mp3")
+            engine = pyttsx3.init()
+            engine.say("Command was previously given, not do this again.")
+            engine.runAndWait()
+            engine.stop()
             continue
         cmds.append(bashCommand)
         with open('commands.txt', 'a') as f:
@@ -21,6 +20,6 @@ while True:
         process = subprocess.Popen(shlex.split(bashCommand), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         output, error = process.communicate()
         print(output.decode('utf-8'))
-    except FileNotFoundError:
+    except Exception:
         os.system(bashCommand)
         print()
