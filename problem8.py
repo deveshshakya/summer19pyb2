@@ -22,4 +22,4 @@ while True:
         print(output.decode('utf-8'))
     except Exception:
         os.system(bashCommand)
-        print()
+print()
